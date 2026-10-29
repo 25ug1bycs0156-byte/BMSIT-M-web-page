@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183c32">
+  <meta name="description" content="Explore academics, admissions, campus life, and research at BMS Institute of Technology and Management.">
+  <title>BMS Institute of Technology and Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --forest: #183c32;
+      --deep: #102c25;
+      --paper: #f7f6f0;
+      --white: #fffefa;
+      --leaf: #dce8d9;
+      --coral: #e8795b;
+      --gold: #efc76a;
+      --ink: #202b26;
+      --muted: #68736c;
+      --line: #dfe3dc;
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "DM Sans", "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; scroll-behavior: smooth; scroll-padding-top: 20px; }
+    body { min-width: 320px; margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+    img { display: block; max-width: 100%; }
+    :focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+    ::selection { color: var(--deep); background: var(--gold); }
+
+    .skip-link { position: absolute; z-index: 20; top: 8px; left: 8px; padding: 11px 15px; transform: translateY(-150%); color: white; background: var(--deep); }
+    .skip-link:focus { transform: translateY(0); }
+    .utility { display: flex; min-height: 34px; align-items: center; justify-content: space-between; gap: 16px; padding: 0 5.4vw; color: #e5ece6; background: var(--deep); font-size: 10px; letter-spacing: .04em; }
+    .utility a { text-decoration: none; }
+    .utility a:hover { color: var(--gold); }
+    .site-header { position: relative; z-index: 10; display: flex; min-height: 82px; align-items: center; justify-content: space-between; gap: 24px; padding: 0 5.4vw; background: var(--white); }
+    .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 11px; color: var(--forest); text-decoration: none; }
+    .brand-mark { display: grid; width: 43px; height: 43px; place-items: center; border: 1px solid var(--forest); border-radius: 50%; font-family: var(--serif); font-size: 13px; font-weight: 600; }
+    .brand-name { font-family: var(--serif); font-size: 17px; font-weight: 600; line-height: 1.05; }
+    .nav { display: flex; align-items: center; gap: clamp(13px, 1.7vw, 25px); }
+    .nav a { color: #34413a; font-size: 11px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .nav a:hover { color: var(--coral); }
+    .nav .nav-apply { display: inline-flex; min-height: 41px; align-items: center; gap: 9px; padding: 0 14px; color: white; background: var(--forest); }
+    .nav .nav-apply:hover { color: white; background: var(--coral); }
+    .menu-toggle { display: none; width: 42px; height: 42px; place-content: center; gap: 5px; border: 1px solid #d5dad3; color: var(--forest); background: transparent; cursor: pointer; }
+    .menu-toggle span { display: block; width: 19px; height: 1.5px; background: currentColor; }
+
+    .hero { position: relative; display: flex; min-height: clamp(540px, 53vw, 690px); align-items: center; overflow: hidden; color: white; background: var(--deep); }
+    .hero img, .hero-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .hero img { object-fit: cover; object-position: center 52%; }
+    .hero-shade { background: linear-gradient(90deg, rgba(11, 34, 27, .86), rgba(11, 34, 27, .58) 45%, rgba(11, 34, 27, .12)); }
+    .hero-content { position: relative; width: min(1200px, 100%); margin: 0 auto; padding: 75px 5.4vw 95px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; color: var(--forest); font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { width: 25px; height: 2px; background: var(--coral); content: ""; }
+    .eyebrow-light { color: #f2f3e9; }
+    .eyebrow-light::before { background: var(--gold); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 790px; margin-bottom: 20px; font-family: var(--serif); font-size: clamp(52px, 7.5vw, 94px); font-weight: 500; line-height: .98; }
+    h1 em { color: var(--gold); font-weight: 500; }
+    .hero-copy { max-width: 470px; margin-bottom: 29px; color: #e5ece5; font-size: 15px; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 13px; padding: 0 18px; border: 1px solid transparent; font-size: 11px; font-weight: 700; text-decoration: none; cursor: pointer; transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-gold { color: var(--deep); background: var(--gold); }
+    .button-gold:hover { background: #f6d991; }
+    .button-outline { border-color: #ffffff80; color: white; background: transparent; }
+    .button-outline:hover { color: var(--deep); background: white; }
+    .image-caption { position: absolute; right: 5.4vw; bottom: 18px; color: #f2f3e9; font-size: 9px; }
+
+    .section { padding: 82px 5.4vw; }
+    .wrap { width: min(1160px, 100%); margin: 0 auto; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 32px; }
+    .section-heading h2, .about-copy h2, .contact-copy h2 { max-width: 690px; margin: 0; color: var(--forest); font-family: var(--serif); font-size: clamp(36px, 4.2vw, 56px); font-weight: 500; line-height: 1.07; }
+    .section-lede { max-width: 390px; margin: 0 0 4px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .about { background: var(--paper); }
+    .about-layout { display: grid; grid-template-columns: 1fr .95fr; align-items: center; gap: clamp(40px, 8vw, 105px); }
+    .about-copy > p:not(.eyebrow) { max-width: 520px; margin: 23px 0 18px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+    .inline-link { display: inline-flex; align-items: center; gap: 10px; color: var(--forest); font-size: 11px; font-weight: 700; text-decoration: none; }
+    .inline-link:hover { color: var(--coral); }
+    .about-photo { position: relative; margin: 0; }
+    .about-photo::before { position: absolute; top: -12px; right: -12px; width: 44%; height: 55%; background: var(--leaf); content: ""; }
+    .about-photo img { position: relative; width: 100%; aspect-ratio: 1.25; object-fit: cover; }
+    .about-photo figcaption { position: relative; padding-top: 8px; color: var(--muted); font-size: 9px; text-align: right; }
+
+    .academics { background: var(--white); }
+    .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--line); background: var(--line); }
+    .program-card { position: relative; display: flex; min-height: 250px; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 23px; background: var(--white); transition: background .2s ease; }
+    .program-card:hover { background: #f3f5ef; }
+    .card-number { color: var(--coral); font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+    .program-card h3, .campus-card h3, .news-card h3 { margin-bottom: 9px; color: var(--forest); font-family: var(--serif); font-size: 24px; font-weight: 500; }
+    .program-card p, .campus-card p, .news-card p { max-width: 320px; margin-bottom: 0; color: var(--muted); font-size: 11px; line-height: 1.75; }
+    .placeholder { color: #778078; font-size: 9px; }
+    .program-card .placeholder { padding-right: 35px; }
+    .card-link { position: absolute; right: 19px; bottom: 18px; display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--line); color: var(--forest); font-size: 17px; text-decoration: none; }
+    .card-link:hover { border-color: var(--forest); color: white; background: var(--forest); }
+
+    .admissions { padding: 65px 5.4vw; color: white; background: var(--forest); }
+    .admissions-layout { display: flex; align-items: end; justify-content: space-between; gap: 35px; }
+    .admissions h2 { margin: 0 0 14px; color: white; font-family: var(--serif); font-size: clamp(38px, 5vw, 60px); font-weight: 500; line-height: 1.06; }
+    .admissions-copy { max-width: 570px; margin: 0; color: #d6e0d8; font-size: 12px; line-height: 1.8; }
+    .admissions .button { flex: 0 0 auto; }
+
+    .campus { background: #eef1e8; }
+    .campus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .campus-card { display: flex; min-height: 230px; flex-direction: column; align-items: flex-start; padding: 22px; border-top: 3px solid var(--forest); background: var(--white); }
+    .campus-card:nth-child(2) { border-color: var(--coral); }
+    .campus-card:nth-child(3) { border-color: #d7a93e; }
+    .campus-card .card-number { margin-bottom: 30px; }
+    .campus-card h3 { font-size: 22px; }
+    .campus-card .placeholder { margin-top: auto; padding-top: 17px; }
+
+    .research { padding: 58px 5.4vw; background: #f0dfc7; }
+    .research-layout { display: grid; grid-template-columns: 1fr 1fr auto; align-items: center; gap: 30px; }
+    .research h2 { margin: 0; color: var(--deep); font-family: var(--serif); font-size: clamp(32px, 3.8vw, 47px); font-weight: 500; }
+    .research-copy { margin: 0; color: #526057; font-size: 11px; line-height: 1.8; }
+    .research .eyebrow { margin-bottom: 11px; }
+    .research .inline-link { white-space: nowrap; }
+
+    .news { background: var(--paper); }
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .news-card { display: flex; min-height: 220px; flex-direction: column; align-items: flex-start; padding: 20px; border: 1px solid var(--line); background: var(--white); }
+    .news-meta { display: flex; width: 100%; justify-content: space-between; gap: 10px; margin-bottom: 25px; color: var(--muted); font-size: 9px; }
+    .news-meta span:first-child { color: var(--coral); font-weight: 700; text-transform: uppercase; }
+    .news-card h3 { font-size: 21px; }
+    .news-card .placeholder { margin-top: auto; padding-top: 15px; }
+
+    .contact { background: var(--white); }
+    .contact-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 8vw, 95px); }
+    .contact-copy h2 { font-size: clamp(36px, 4vw, 51px); }
+    .contact-intro { max-width: 400px; margin: 18px 0 27px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .contact-list { margin: 0; }
+    .contact-list > div { display: grid; grid-template-columns: 82px 1fr; gap: 10px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 11px; }
+    .contact-list dt { color: var(--forest); font-weight: 700; }
+    .contact-list dd { margin: 0; color: var(--muted); }
+    .contact-form { display: grid; gap: 9px; padding: 25px; background: #f2f3ed; }
+    .contact-form h3 { margin: 0 0 5px; color: var(--forest); font-family: var(--serif); font-size: 25px; font-weight: 500; }
+    .contact-form label { margin-top: 4px; color: var(--forest); font-size: 10px; font-weight: 700; }
+    .contact-form input, .contact-form textarea { width: 100%; min-height: 43px; padding: 11px 12px; border: 1px solid #cbd3ca; border-radius: 0; color: var(--ink); background: var(--white); font-size: 11px; resize: vertical; }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: #778078; }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--forest); outline: 2px solid #183c3233; outline-offset: 1px; }
+    .submit-button { justify-self: start; margin-top: 7px; color: white; background: var(--forest); }
+    .submit-button:hover { background: var(--coral); }
+    .form-status { min-height: 18px; margin: 0; color: var(--forest); font-size: 10px; line-height: 1.6; }
+
+    .footer { padding: 43px 5.4vw 17px; color: #e5ece6; background: var(--deep); }
+    .footer-main { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 28px; padding-bottom: 33px; }
+    .footer .brand { align-self: start; color: white; }
+    .footer .brand-mark { border-color: #a7b9ac; }
+    .footer .brand-name { color: white; }
+    .footer-col { display: flex; align-items: flex-start; flex-direction: column; gap: 10px; }
+    .footer-col h2 { margin: 0 0 5px; color: #b7c8bb; font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .footer-col a { color: #e5ece6; font-size: 10px; text-decoration: none; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 18px; padding-top: 14px; border-top: 1px solid #ffffff2a; color: #b7c8bb; font-size: 9px; }
+
+    @media (max-width: 1050px) {
+      .nav { gap: 11px; }
+      .nav a { font-size: 10px; }
+      .nav .nav-apply { padding-inline: 10px; }
+      .research-layout { grid-template-columns: 1fr 1fr; }
+      .research .inline-link { grid-column: 2; }
+    }
+    @media (max-width: 800px) {
+      .utility, .site-header { padding-inline: 22px; }
+      .site-header { min-height: 72px; }
+      .menu-toggle { display: grid; }
+      .nav { position: absolute; top: 100%; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 7px 22px 18px; background: var(--white); box-shadow: 0 15px 20px #102c2518; }
+      .nav.is-open { display: flex; flex-direction: column; }
+      .nav a { padding: 13px 5px; border-bottom: 1px solid var(--line); font-size: 12px; }
+      .nav .nav-apply { justify-content: center; margin-top: 10px; padding: 13px; border: 0; }
+      .hero { min-height: 590px; }
+      .hero img { object-position: 58% center; }
+      .hero-shade { background: linear-gradient(90deg, rgba(11, 34, 27, .84), rgba(11, 34, 27, .4)); }
+      .hero-content { padding: 70px 24px 92px; }
+      h1 { font-size: clamp(53px, 11vw, 76px); }
+      .image-caption { right: 24px; }
+      .section { padding: 66px 24px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 14px; }
+      .about-layout, .contact-layout { grid-template-columns: 1fr; }
+      .about-layout { gap: 36px; }
+      .about-photo { max-width: 600px; }
+      .program-grid, .campus-grid, .news-grid { grid-template-columns: 1fr 1fr; }
+      .admissions-layout { align-items: flex-start; flex-direction: column; }
+      .research-layout { grid-template-columns: 1fr; gap: 18px; }
+      .research .inline-link { grid-column: auto; }
+      .footer-main { grid-template-columns: 1.3fr 1fr 1fr; }
+      .footer-main > .brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 500px) {
+      .utility { font-size: 9px; }
+      .brand-name { font-size: 14px; }
+      .brand-mark { width: 39px; height: 39px; }
+      .hero { min-height: 570px; }
+      .hero-content { padding-inline: 22px; }
+      .hero-actions { align-items: flex-start; flex-direction: column; }
+      .hero-actions .button { min-width: 190px; justify-content: space-between; }
+      .section-heading h2, .about-copy h2 { font-size: 39px; }
+      .program-grid, .campus-grid, .news-grid { grid-template-columns: 1fr; }
+      .program-card { min-height: 220px; }
+      .campus-card { min-height: 205px; }
+      .contact-form { padding: 20px; }
+      .footer-main { grid-template-columns: 1fr 1fr; gap: 24px 18px; }
+      .footer-main > .brand { grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="utility">
+    <span>BMS Institute of Technology and Management</span>
+    <a href="#contact">Contact the institute <span aria-hidden="true">↗</span></a>
+  </div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="BMS Institute of Technology and Management home">
+      <span class="brand-mark" aria-hidden="true">BMS</span>
+      <span class="brand-name">BMS Institute of<br>Technology &amp; Management</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#academics">Academics</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#campus-life">Campus Life</a>
+      <a href="#research">Research</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-apply" href="#admissions">Apply now <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&amp;fit=crop&amp;w=2200&amp;q=85" alt="University campus building framed by green trees; placeholder campus image" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow eyebrow-light">BMS Institute of Technology and Management</p>
+        <h1 id="hero-title">Build what<br>comes <em>next.</em></h1>
+        <p class="hero-copy">Explore technology, develop new perspectives, and shape your next chapter at BMSIT&amp;M.</p>
+        <div class="hero-actions">
+          <a class="button button-gold" href="#academics">Explore programs <span aria-hidden="true">↗</span></a>
+          <a class="button button-outline" href="#admissions">Apply now <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <span class="image-caption">Campus photograph placeholder</span>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="wrap about-layout">
+        <div class="about-copy">
+          <p class="eyebrow">About the institute</p>
+          <h2 id="about-title">Learning for a changing world.</h2>
+          <p>BMS Institute of Technology and Management (BMSIT&amp;M) is an institute focused on education in technology and management. This introductory copy is a placeholder; add verified history, affiliations, and institute details before publishing.</p>
+          <a class="inline-link" href="#contact">Learn about BMSIT&amp;M <span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="about-photo">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="Students walking together on a university campus; placeholder image" loading="lazy">
+          <figcaption>Campus photograph placeholder</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section academics" id="academics" aria-labelledby="academics-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Academics</p><h2 id="academics-title">Explore your next direction.</h2></div>
+          <p class="section-lede">Browse study pathways and research. Replace these cards with current, verified program information.</p>
+        </div>
+        <div class="program-grid">
+          <article class="program-card"><span class="card-number">01 / STUDY</span><div><h3>Undergraduate</h3><p>Explore undergraduate study options across engineering, technology, and related fields.</p></div><span class="placeholder">Program details to be confirmed</span><a class="card-link" href="#contact" aria-label="Ask about undergraduate programs">↗</a></article>
+          <article class="program-card"><span class="card-number">02 / ADVANCE</span><div><h3>Postgraduate</h3><p>Find advanced study pathways to deepen your knowledge and build new expertise.</p></div><span class="placeholder">Program details to be confirmed</span><a class="card-link" href="#contact" aria-label="Ask about postgraduate programs">↗</a></article>
+          <article class="program-card"><span class="card-number">03 / DISCOVER</span><div><h3>Research</h3><p>Learn about research areas, faculty work, and ways to take part in new ideas.</p></div><span class="placeholder">Research information to be added</span><a class="card-link" href="#research" aria-label="Explore research information">↗</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="admissions" id="admissions" aria-labelledby="admissions-title">
+      <div class="wrap admissions-layout">
+        <div>
+          <p class="eyebrow eyebrow-light">Admissions</p>
+          <h2 id="admissions-title">Take your next step.</h2>
+          <p class="admissions-copy">Connect with the institute for application guidance. Add verified dates, eligibility, and process information here.</p>
+        </div>
+        <a class="button button-gold" href="#contact">Contact admissions <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="section campus" id="campus-life" aria-labelledby="campus-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">Campus life</p><h2 id="campus-title">Make space for what matters.</h2></div>
+          <p class="section-lede">Add current, verified information about student communities, campus facilities, and events.</p>
+        </div>
+        <div class="campus-grid">
+          <article class="campus-card"><span class="card-number">01</span><h3>Student clubs</h3><p>Student-led communities create space to connect, collaborate, and explore shared interests.</p><span class="placeholder">Club details to be added</span></article>
+          <article class="campus-card"><span class="card-number">02</span><h3>Campus facilities</h3><p>Learning and gathering spaces support the many ways students spend their time on campus.</p><span class="placeholder">Facility details to be confirmed</span></article>
+          <article class="campus-card"><span class="card-number">03</span><h3>Events &amp; community</h3><p>Share confirmed events, talks, activities, and moments from across the campus.</p><span class="placeholder">Event calendar to be added</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="research" id="research" aria-labelledby="research-title">
+      <div class="wrap research-layout">
+        <div><p class="eyebrow">Research &amp; innovation</p><h2 id="research-title">Curiosity, put to work.</h2></div>
+        <p class="research-copy">Discover research themes, labs, faculty interests, and opportunities to participate. Add verified research information before publishing.</p>
+        <a class="inline-link" href="#contact">Research enquiries <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="section news" aria-labelledby="news-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">News &amp; announcements</p><h2 id="news-title">From the institute.</h2></div>
+          <p class="section-lede">Sample cards only. Replace with current, approved announcements before launch.</p>
+        </div>
+        <div class="news-grid">
+          <article class="news-card"><div class="news-meta"><span>Announcement</span><span>Date to be added</span></div><h3>Campus update</h3><p>Add the latest verified institute announcement here.</p><span class="placeholder">Sample content</span></article>
+          <article class="news-card"><div class="news-meta"><span>Academic</span><span>Date to be added</span></div><h3>Academic calendar</h3><p>Replace with a current academic calendar update or important date.</p><span class="placeholder">Sample content</span></article>
+          <article class="news-card"><div class="news-meta"><span>Events</span><span>Date to be added</span></div><h3>Upcoming events</h3><p>Share confirmed lectures, events, and campus activities in this space.</p><span class="placeholder">Sample content</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-layout">
+        <div class="contact-copy">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Let’s start a conversation.</h2>
+          <p class="contact-intro">Official contact details will be added after verification.</p>
+          <dl class="contact-list">
+            <div><dt>Address</dt><dd>Institute address to be confirmed</dd></div>
+            <div><dt>Phone</dt><dd>Phone number to be added</dd></div>
+            <div><dt>Email</dt><dd>Official email to be added</dd></div>
+          </dl>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <h3>Send an enquiry</h3>
+          <label for="name">Your name</label>
+          <input id="name" name="name" autocomplete="name" minlength="2" maxlength="100" placeholder="Name" required>
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required>
+          <label for="message">How can we help?</label>
+          <textarea id="message" name="message" rows="4" minlength="10" maxlength="2000" placeholder="Write your message" required></textarea>
+          <button class="button submit-button" type="submit">Submit enquiry <span aria-hidden="true">↗</span></button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-main">
+      <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">BMS</span><span class="brand-name">BMS Institute of<br>Technology &amp; Management</span></a>
+      <div class="footer-col"><h2>Explore</h2><a href="#about">About</a><a href="#academics">Academics</a><a href="#admissions">Admissions</a></div>
+      <div class="footer-col"><h2>Discover</h2><a href="#campus-life">Campus Life</a><a href="#research">Research</a><a href="#contact">Contact</a></div>
+      <div class="footer-col"><h2>Social</h2><a href="#contact" aria-label="Instagram placeholder link">Instagram ↗</a><a href="#contact" aria-label="LinkedIn placeholder link">LinkedIn ↗</a><span class="placeholder">Social links to be confirmed</span></div>
+    </div>
+    <div class="wrap footer-bottom"><span>© <span id="year"></span> BMS Institute of Technology and Management</span><span>Sample content and contact placeholders require institute review.</span></div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('#primary-nav');
+
+    function setMenuOpen(isOpen) {
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      navigation.classList.toggle('is-open', isOpen);
+    }
+
+    menuButton.addEventListener('click', () => {
+      setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+    navigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    });
+
+    document.querySelector('#contact-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const status = document.querySelector('#form-status');
+      if (!form.reportValidity()) return;
+      status.textContent = 'Form checks passed. This demo does not send messages; connect an official endpoint before launch.';
+      form.reset();
+    });
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
